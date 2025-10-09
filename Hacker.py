@@ -9,6 +9,7 @@ This is my own work as defined by the University's Academic Misconduct Policy.
 """
 from Asset import Asset
 
+
 class Hacker:
     def __init__(self, name):
         # Constructor for the class Hacker to initialise the variables.
@@ -17,6 +18,13 @@ class Hacker:
         self.__rig = None
         self.__trace_level = 0
 
-    # String conversation method to format Hacker.
-    def __str__(self):
+    def acquire_rig(self):
+        # Acquires a rig with CryptoToken
         pass
+
+    # String conversation method display Hacker & inventory contents.
+    def __str__(self):
+        return (f"Hacker's name:{self.__name}"
+                f"rig name:"
+                f"trace level: {self.__trace_level}"
+                f"inventory: {self.__inventory}")
