@@ -16,7 +16,13 @@ class Asset:
         self.__description = description
         self.__encrypted = None
 
+    # Getter for name private attribute.
+    def get_name(self):
+        return self.__name
+
     # String conversation method to format Asset.
     def __str__(self):
-        # todo: add str method
-        pass
+        if self.__description is not None:
+            return f"{self.__name}: {self.__description} [Encrypted]"
+        else:
+            return f"{self.__name}: {self.__description}"
