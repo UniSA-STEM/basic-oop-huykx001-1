@@ -18,6 +18,19 @@ class Hacker:
         self.__rig = None
         self.__trace_level = 0
 
+    # Getters for private attributes.
+    def get_name(self):
+        return self.__name
+
+    def get_inventory(self):
+        return self.__inventory
+
+    def get_rig(self):
+        return self.__rig
+
+    def get_trace_level(self):
+        return self.__trace_level
+
     def acquire_rig(self):
         # Acquires a rig with CryptoToken
         pass
