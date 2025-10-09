@@ -31,9 +31,22 @@ class Hacker:
     def get_trace_level(self):
         return self.__trace_level
 
+    def retrieve_asset_name(self, asset_name):
+        # returns the asset when name is matched.
+        for asset in self.__inventory:
+            if asset.get_name() == asset_name:
+                return asset
+
     def acquire_rig(self):
         # Acquires a rig with CryptoToken
-        pass
+        if self.retrieve_asset_name("CryptoToken"):
+            # removes CryptoToken from inventory
+            self.__inventory.remove(self.retrieve_asset_name("CryptoToken"))
+            # acquired a rig
+            self.__rig = True
+            print(f"{self.__name} has activated the rig :)")
+        else:
+            print(f"{self.__name} does not enough CryptoToken to acquire a rig!")
 
     # String conversation method display Hacker & inventory contents.
     def __str__(self):
@@ -41,3 +54,7 @@ class Hacker:
                 f"rig name:"
                 f"trace level: {self.__trace_level}"
                 f"inventory: {self.__inventory}")
+
+
+h = Hacker("Anonymous")
+h.acquire_rig()
