@@ -7,12 +7,13 @@ ID: 110442620
 Username: HUYKX001
 This is my own work as defined by the University's Academic Misconduct Policy.
 """
+from Asset import Asset
 
 class Hacker:
     def __init__(self, name):
         # Constructor for the class Hacker to initialise the variables.
         self.__name = name
-        self.__inventor = []
+        self.__inventory = [Asset("CryptoToken", "A digital currency!")]
         self.__rig = None
         self.__trace_level = 0
 
