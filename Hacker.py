@@ -9,7 +9,6 @@ This is my own work as defined by the University's Academic Misconduct Policy.
 """
 from Asset import Asset
 
-
 class Hacker:
     def __init__(self, name):
         # Constructor for the class Hacker to initialise the variables.
@@ -37,24 +36,20 @@ class Hacker:
             if asset.get_name() == asset_name:
                 return asset
 
-    def acquire_rig(self):
+    def acquire_rig(self, rig):
         # Acquires a rig with CryptoToken
         if self.retrieve_asset_name("CryptoToken"):
             # removes CryptoToken from inventory
             self.__inventory.remove(self.retrieve_asset_name("CryptoToken"))
             # acquired a rig
-            self.__rig = True
+            self.__rig = rig
             print(f"{self.__name} has activated the rig :)")
         else:
             print(f"{self.__name} does not enough CryptoToken to acquire a rig!")
 
-    # String conversation method display Hacker & inventory contents.
+    # String conversion method display Hacker & inventory contents.
     def __str__(self):
-        return (f"Hacker's name:{self.__name}"
-                f"rig name:"
-                f"trace level: {self.__trace_level}"
-                f"inventory: {self.__inventory}")
-
-
-h = Hacker("Anonymous")
-h.acquire_rig()
+        return (f"Hacker's name:{self.__name}\n"
+                f"rig name:{self.__rig.get_name()}\n"
+                f"trace level: {self.__trace_level}\n"
+                f"inventory: {self.__inventory}\n")
