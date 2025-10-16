@@ -20,6 +20,7 @@ class Hacker:
                             Asset("HardwarePatch", "Upgrade rigs!")]
         self.__rig = None
         self.__trace_level = 0
+        self.__rig_count = 0 # checks amount of Rigs
 
     # Getters for private attributes.
     def get_name(self):
