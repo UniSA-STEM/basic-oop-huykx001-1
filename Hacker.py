@@ -20,7 +20,7 @@ class Hacker:
                             Asset("HardwarePatch", "Upgrade rigs!")]
         self.__rig = None
         self.__trace_level = 0
-        self.__rig_count = 0 # checks amount of Rigs
+        self.__rig_count = 0  # checks amount of Rigs
 
     # Getters for private attributes.
     def get_name(self):
@@ -35,11 +35,12 @@ class Hacker:
     def get_trace_level(self):
         return self.__trace_level
 
+    # Note: might keep later or not.
     def check_rig(self):
-        if self.__rig != None:
-            return True
-        else:
+        if self.__rig_count != 0 and self.__rig_count < 0:
             return False
+        else:
+            return True
 
     def retrieve_asset_name(self, asset_name):
         # returns the asset when name is matched.
@@ -54,6 +55,7 @@ class Hacker:
             self.__inventory.remove(self.retrieve_asset_name("CryptoToken"))
             # acquired a rig
             self.__rig = rig
+            self.__rig_count += 1
             print(f"{self.__name} has activated the rig :)")
         else:
             print(f"{self.__name} does not enough CryptoToken to acquire a rig!")
@@ -62,8 +64,9 @@ class Hacker:
         # Checks if hacker has a rig
         if self.check_rig():
             if foe_rig.get_damage_counter() < 2:
-                if self.retrieve_asset_name("DataSpike"):
+                if self.__rig.retrieve_asset_name("DataSpike"):  # TODO: fix this line (wont work)
                     foe_rig.take_hit()
+                    print("test")
             else:
                 print(f"{self.__name} does not have any data spikes :(")
 
