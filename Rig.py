@@ -16,8 +16,9 @@ class Rig:
         self.__name = name
         self.__damage_counter = 0
         self.__broken_state = False
-        self.__storage = [Asset("RemovableDrive", "Used for extraction!")]
-        self.__data_spikes = 2
+        self.__storage = [Asset("RemovableDrive", "Used for extraction!"),
+                          Asset("DataSpike", "used in battles!"),
+                          Asset("DataSpike", "used in battles!")]
         self.__removable_drive = 1
         self.__upgrade_level = 0
 
