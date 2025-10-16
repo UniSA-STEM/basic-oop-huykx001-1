@@ -35,14 +35,20 @@ class Rig:
     def get_storage(self):
         return self.__storage
 
-    def get_data_spikes(self):
-        return self.__data_spikes
-
     def get_removable_drive(self):
         return self.__removable_drive
 
     def get_upgrade_level(self):
         return self.__upgrade_level
+
+    def take_hit(self):
+        # applies damage numbers to rigs
+        self.__damage_counter += 1
+        print(f"{self.get_name()} has taken hit!")
+
+        # Rig is now broken after 2 hits
+        if self.get_name() and self.__damage_counter == 2:
+            print(f"{self.get_name()} is now broken!")
 
     # String conversation method to format Rig.
     def __str__(self):
