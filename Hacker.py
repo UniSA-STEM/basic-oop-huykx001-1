@@ -9,13 +9,14 @@ This is my own work as defined by the University's Academic Misconduct Policy.
 """
 from Asset import Asset
 
+
 class Hacker:
     def __init__(self, name):
         # Constructor for the class Hacker to initialise the variables.
         self.__name = name
         # stores assets
         self.__inventory = [Asset("CryptoToken", "A digital currency!"),
-                            Asset("securityChip", "Encrypts or decrypts assets!"),
+                            Asset("SecurityChip", "Encrypts or decrypts assets!"),
                             Asset("HardwarePatch", "Upgrade rigs!")]
         self.__rig = None
         self.__trace_level = 0
@@ -50,12 +51,18 @@ class Hacker:
         else:
             print(f"{self.__name} does not enough CryptoToken to acquire a rig!")
 
-    def launch_data_spikes(self, rival_rig):
-        pass
+    def launch_data_spikes(self, foe_rig):
+        # Checks if hacker has a rig
+        if self.__rig:
+            if foe_rig.get_damage_counter() < 2:
+                if self.retrieve_asset_name("DataSpike"):
+                    foe_rig.take_hit()
+            else:
+                print(f"{self.__name} does not have any data spikes :(")
 
     # String conversion method display Hacker & inventory contents.
-    def __str__(self):
-        return (f"Hacker's name:{self.__name}\n"
-                f"rig name:{self.__rig.get_name()}\n"
-                f"trace level: {self.__trace_level}\n"
-                f"inventory: {self.__inventory}\n")
+    # def __str__(self):
+    #     return (f"Hacker's name:{self.__name}\n"
+    #             f"rig name:{self.__rig.get_name()}\n"
+    #             f"trace level: {self.__trace_level}\n"
+    #             f"inventory: {self.__inventory}\n")
