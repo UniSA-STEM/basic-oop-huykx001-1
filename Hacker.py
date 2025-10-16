@@ -13,7 +13,10 @@ class Hacker:
     def __init__(self, name):
         # Constructor for the class Hacker to initialise the variables.
         self.__name = name
-        self.__inventory = [Asset("CryptoToken", "A digital currency!")]
+        # stores assets
+        self.__inventory = [Asset("CryptoToken", "A digital currency!"),
+                            Asset("securityChip", "Encrypts or decrypts assets!"),
+                            Asset("HardwarePatch", "Upgrade rigs!")]
         self.__rig = None
         self.__trace_level = 0
 
@@ -46,6 +49,9 @@ class Hacker:
             print(f"{self.__name} has activated the rig :)")
         else:
             print(f"{self.__name} does not enough CryptoToken to acquire a rig!")
+
+    def launch_data_spikes(self, rival_rig):
+        pass
 
     # String conversion method display Hacker & inventory contents.
     def __str__(self):
