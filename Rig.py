@@ -41,6 +41,12 @@ class Rig:
     def get_upgrade_level(self):
         return self.__upgrade_level
 
+    def asset_name_retrieve(self, asset_name):
+        # returns asset name when matched
+        for asset in self.__storage:
+            if asset.get_name() == asset_name:
+                return asset
+
     def take_hit(self):
         # applies damage numbers to rigs
         self.__damage_counter += 1
