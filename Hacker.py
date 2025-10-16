@@ -34,6 +34,12 @@ class Hacker:
     def get_trace_level(self):
         return self.__trace_level
 
+    def check_rig(self):
+        if self.__rig != None:
+            return True
+        else:
+            return False
+
     def retrieve_asset_name(self, asset_name):
         # returns the asset when name is matched.
         for asset in self.__inventory:
@@ -53,7 +59,7 @@ class Hacker:
 
     def launch_data_spikes(self, foe_rig):
         # Checks if hacker has a rig
-        if self.__rig:
+        if self.check_rig():
             if foe_rig.get_damage_counter() < 2:
                 if self.retrieve_asset_name("DataSpike"):
                     foe_rig.take_hit()
