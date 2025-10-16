@@ -61,14 +61,19 @@ class Hacker:
             print(f"{self.__name} does not enough CryptoToken to acquire a rig!")
 
     def launch_data_spikes(self, foe_rig):
-        # Checks if hacker has a rig
-        if self.check_rig():
-            if foe_rig.get_damage_counter() < 2:
-                if self.__rig.retrieve_asset_name("DataSpike"):  # TODO: fix this line (wont work)
-                    foe_rig.take_hit()
-                    print("test")
-            else:
-                print(f"{self.__name} does not have any data spikes :(")
+        # checks that trace levels don't exceed past 5
+        if self.__trace_level != 5:
+            # Checks if hacker has a rig
+            if self.check_rig():
+                if foe_rig.get_damage_counter() < 2:
+                    if self.__rig.asset_name_retrieve("DataSpike"):
+                        foe_rig.take_hit()
+                        # hacker trace level increases
+                        self.__trace_level += 1
+                else:
+                    print(f"{self.__name} does not have any data spikes :(")
+        else:
+            print(f"{self.__name} is too exposed! reduce the traces!")
 
     # String conversion method display Hacker & inventory contents.
     # def __str__(self):
