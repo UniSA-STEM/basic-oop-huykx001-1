@@ -80,8 +80,10 @@ class Hacker:
             print(f"{self.__name} is too exposed! reduce the traces!")
 
     # String conversion method display Hacker & inventory contents.
-    # def __str__(self):
-    #     return (f"Hacker's name:{self.__name}\n"
-    #             f"rig name:{self.__rig.get_name()}\n"
-    #             f"trace level: {self.__trace_level}\n"
-    #             f"inventory: {self.__inventory}\n")
+    def __str__(self):
+        asset_storage = [storage.get_name() for storage in self.__inventory]
+
+        return (f"Hacker's name: {self.__name}\n"
+                f"rig name: {self.__rig.get_name()}\n"
+                f"trace level: {self.__trace_level}\n"
+                f"inventory: {", ".join(asset_storage)}\n")
