@@ -20,6 +20,9 @@ class Asset:
     def get_name(self):
         return self.__name
 
+    def get_encrypted(self):
+        return self.__encrypted
+
     # String conversation method to format Asset.
     def __str__(self):
         if self.__description is not None:
