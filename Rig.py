@@ -54,7 +54,16 @@ class Rig:
 
         # Rig is now broken after 2 hits
         if self.get_name() and self.__damage_counter == 2:
+            self.__broken_state = True
             print(f"{self.get_name()} is now broken!")
+
+    def repair_rig(self):
+        # checks if rig is broke
+        if self.__broken_state:
+            # repairs the Rig broken state
+            self.__damage_counter = 0
+            self.__broken_state = False
+            print(f"{self.get_name()} has been repaired!")
 
     # String conversation method to format Rig.
     def __str__(self):
