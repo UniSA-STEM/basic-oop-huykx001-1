@@ -79,4 +79,4 @@ class Rig:
         return (f"name: {self.__name}\n"
                 f"condition: {self.state()}\n"
                 f"upgrade level: {self.__upgrade_level}\n"
-                f"stored assets: {', '.join(stored_asset)}")
+                f"stored assets: {", ".join(stored_asset)}")
