@@ -63,8 +63,20 @@ class Rig:
             # repairs the Rig broken state
             self.__damage_counter = 0
             self.__broken_state = False
-            print(f"{self.get_name()} has been repaired!")
+            print(f"{self.get_name()} has been repaired!\n")
+
+    def state(self):
+        # returns the condition state of the rig
+        if self.__broken_state == True:
+            return f"Rig is in a broken state!"
+        else:
+            return f"Rig is in perfect condition!"
 
     # String conversation method to format Rig.
     def __str__(self):
-        pass
+        stored_asset = [asset.get_name() for asset in self.__storage]
+
+        return (f"name: {self.__name}\n"
+                f"condition: {self.state()}\n"
+                f"upgrade level: {self.__upgrade_level}\n"
+                f"stored assets: {', '.join(stored_asset)}")
