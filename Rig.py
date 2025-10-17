@@ -73,6 +73,11 @@ class Rig:
         else:
             return f"Rig is in perfect condition!"
 
+    def upgrade_rig(self):
+        # upgrades the rig's level
+        self.__upgrade_level += 1
+
+
     # String conversation method to format Rig.
     def __str__(self):
         stored_asset = [asset.get_name() for asset in self.__storage]
