@@ -18,7 +18,8 @@ class Rig:
         self.__broken_state = False
         self.__storage = [Asset("RemovableDrive", "Used for extraction!"),
                           Asset("DataSpike", "used in battles!"),
-                          Asset("DataSpike", "used in battles!")]
+                          Asset("DataSpike", "used in battles!"),
+                          Asset("HardwarePatch", "Upgrade rigs!")]
         self.__removable_drive = 1
         self.__upgrade_level = 0
 
@@ -50,12 +51,12 @@ class Rig:
     def take_hit(self):
         # applies damage numbers to rigs
         self.__damage_counter += 1
-        print(f"{self.get_name()} has taken hit!")
+        print(f"{self.get_name()} has taken hit!\n")
 
         # Rig is now broken after 2 hits
         if self.get_name() and self.__damage_counter == 2:
             self.__broken_state = True
-            print(f"{self.get_name()} is now broken!")
+            print(f"{self.get_name()} is now broken!\n")
 
     def repair_rig(self):
         # checks if rig is broke
@@ -79,4 +80,4 @@ class Rig:
         return (f"name: {self.__name}\n"
                 f"condition: {self.state()}\n"
                 f"upgrade level: {self.__upgrade_level}\n"
-                f"stored assets: {", ".join(stored_asset)}")
+                f"stored assets: {", ".join(stored_asset)}\n")
