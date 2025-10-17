@@ -74,10 +74,15 @@ class Hacker:
                         foe_rig.take_hit()
                         # hacker trace level increases
                         self.__trace_level += 1
+                        # TODO: remove data spike from storage
                 else:
                     print(f"{self.__name} does not have any data spikes :(")
         else:
             print(f"{self.__name} is too exposed! reduce the traces!")
+
+    # Protects assets from being stolen.
+    def encrypt_assets(self):
+        pass
 
     # String conversion method display Hacker & inventory contents.
     def __str__(self):
