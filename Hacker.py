@@ -59,11 +59,10 @@ class Hacker:
             # acquired a rig
             self.__rig = rig
             self.__rig_count += 1
-            print(f"{self.__name} has activated the rig :)")
+            print(f"{self.__name} has activated the rig :)\n")
         else:
-            print(f"{self.__name} does not enough CryptoToken to acquire a rig!")
+            print(f"{self.__name} does not enough CryptoToken to acquire a rig!\n")
 
-    # TODO: Create a way to remove data spike from storage
     def launch_data_spikes(self, foe_rig):
         # checks that trace levels don't exceed past 5
         if self.__trace_level != 5:
@@ -72,17 +71,29 @@ class Hacker:
                 if foe_rig.get_damage_counter() < 2:
                     if self.__rig.asset_name_retrieve("DataSpike"):
                         foe_rig.take_hit()
-                        # hacker trace level increases
+                        # hacker trace level increases and damage
                         self.__trace_level += 1
                         # TODO: remove data spike from storage
                 else:
                     print(f"{self.__name} does not have any data spikes :(")
+                # extracts opponent's assets
+                if foe_rig.get_damage_counter() == 2:
+                    print(f"{self.__name} has extracted {foe_rig.get_name()}'s unsecured assets!\n")
+                    # TODO: remove opponent items
         else:
             print(f"{self.__name} is too exposed! reduce the traces!")
 
-    # Protects assets from being stolen.
-    def encrypt_assets(self):
-        pass
+    # store assets into storage
+    def store_storage(self, assets):
+        if self.check_rig():
+            for assets in self.__inventory:
+                # removes asset from inventory
+                self.__inventory.remove(assets)
+                # TODO: add asset into storage
+
+                print(f"{assets.get_name()} moved into {self.__rig.get_name()}'s storage")
+            else:
+                print(f"{self.__name} does not have {assets.get_name()} to add to {self.__rig.get_name()}")
 
     # String conversion method display Hacker & inventory contents.
     def __str__(self):
