@@ -35,6 +35,9 @@ class Hacker:
     def get_trace_level(self):
         return self.__trace_level
 
+    def get_rig_count(self):
+        return self.__rig_count
+
     # Note: might keep later or not.
     def check_rig(self):
         if self.__rig_count != 0 and self.__rig_count < 0:
@@ -60,6 +63,7 @@ class Hacker:
         else:
             print(f"{self.__name} does not enough CryptoToken to acquire a rig!")
 
+    # TODO: Create a way to remove data spike from storage
     def launch_data_spikes(self, foe_rig):
         # checks that trace levels don't exceed past 5
         if self.__trace_level != 5:
