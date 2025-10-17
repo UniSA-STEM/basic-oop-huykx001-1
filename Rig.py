@@ -70,13 +70,14 @@ class Rig:
         # returns the condition state of the rig
         if self.__broken_state == True:
             return f"Rig is in a broken state!"
+        elif self.__damage_counter == 1:
+            return f"Rig has been deteriorated"
         else:
             return f"Rig is in perfect condition!"
 
     def upgrade_rig(self):
         # upgrades the rig's level
         self.__upgrade_level += 1
-
 
     # String conversation method to format Rig.
     def __str__(self):
