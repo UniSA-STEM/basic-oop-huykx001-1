@@ -48,6 +48,7 @@ class Rig:
             if asset.get_name() == asset_name:
                 return asset
 
+    # TODO: alter hit damage based on upgrade level
     def take_hit(self):
         # applies damage numbers to rigs
         self.__damage_counter += 1
@@ -77,7 +78,11 @@ class Rig:
 
     def upgrade_rig(self):
         # upgrades the rig's level
-        self.__upgrade_level += 1
+        if self.__upgrade_level < 3:
+            self.__upgrade_level += 1
+            print(f"{self.__name} has been upgraded to level ({self.__upgrade_level})\n")
+        else:
+            print(f"{self.__name} is at maximum capacity!\n")
 
     # String conversation method to format Rig.
     def __str__(self):
