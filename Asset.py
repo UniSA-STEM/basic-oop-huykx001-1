@@ -25,7 +25,7 @@ class Asset:
 
     # String conversation method to format Asset.
     def __str__(self):
-        if self.__description is not None:
+        if self.__encrypted is not None:
             return f"{self.__name}: {self.__description} [Encrypted]"
         else:
             return f"{self.__name}: {self.__description}"
