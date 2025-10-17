@@ -16,8 +16,7 @@ class Hacker:
         self.__name = name
         # stores assets
         self.__inventory = [Asset("CryptoToken", "A digital currency!"),
-                            Asset("SecurityChip", "Encrypts or decrypts assets!"),
-                            Asset("HardwarePatch", "Upgrade rigs!")]
+                            Asset("SecurityChip", "Encrypts or decrypts assets!")]
         self.__rig = None
         self.__trace_level = 0
         self.__rig_count = 0  # checks amount of Rigs
