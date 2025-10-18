@@ -8,7 +8,7 @@ Username: HUYKX001
 This is my own work as defined by the University's Academic Misconduct Policy.
 """
 from Asset import Asset
-
+from Hacker import Hacker
 
 class Rig:
     def __init__(self, name):
@@ -18,8 +18,7 @@ class Rig:
         self.__broken_state = False
         self.__storage = [Asset("RemovableDrive", "Used for extraction!"),
                           Asset("DataSpike", "used in battles!"),
-                          Asset("DataSpike", "used in battles!"),
-                          Asset("HardwarePatch", "Upgrade rigs!")]
+                          Asset("DataSpike", "used in battles!"),]
         self.__removable_drive = 1
         self.__upgrade_level = 0
 
@@ -84,16 +83,17 @@ class Rig:
         else:
             return f"Rig is in perfect condition!"
 
-    def upgrade_rig(self):
-        # upgrades the rig's level
-        if self.asset_name_retrieve("HardwarePatch"):
-            if self.__upgrade_level < 3:
-                self.__upgrade_level += 1
-                print(f"{self.__name} has been upgraded to level ({self.__upgrade_level})\n")
-            else:
-                print(f"{self.__name} is at maximum capacity!\n")
-        else:
-            print(f"{self.__name} does not have a hardware patch!")
+    def upgrade_rig(self, hacker):
+        for assets in hacker.get_inventory():
+            if isinstance(assets, Asset) and assets.get_name() == "HardwarePatch":
+                # upgrades the rig's level
+                if self.__upgrade_level < 3:
+                    self.__upgrade_level += 1
+                    print(f"{self.__name} has been upgraded to level ({self.__upgrade_level})\n")
+                elif self.__upgrade_level <= 4:
+                    print(f"{self.__name} is at maximum capacity!\n")
+                else:
+                    print(f"{self.__name} does not have a hardware patch!")
 
     # String conversation method to format Rig.
     def __str__(self):
