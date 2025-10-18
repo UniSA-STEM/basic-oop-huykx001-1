@@ -83,13 +83,22 @@ class Hacker:
         else:
             print(f"{self.__name} is too exposed! reduce the traces!")
 
-    def encrypt_assets(self, assets):
-        for assets in self.__inventory:
-            if assets.get_encrypted():
-                print(f"Assets already encrypted!")
-            else:
-                # encrypts the assets
-                return True
+    def encrypt_assets(self):
+        if self.retrieve_asset_name("SecurityChip"):
+            self.__inventory.remove(self.retrieve_asset_name("SecurityChip"))
+            print(f"{self.__name}'s assets has been encrypted")
+            return True
+        else:
+            return False
+
+    def store_retrieve_assets(self, rig, asset_name):
+        if self.encrypt_assets() is False:
+            for assets in self.__inventory:
+                if assets.get_name() == asset_name:
+                    # removes assets from inventory
+                    self.__inventory.remove(assets)
+                    # adds assets into storage
+                    rig.get_storage().append(assets)
 
     # String conversion method display Hacker & inventory contents.
     def __str__(self):
