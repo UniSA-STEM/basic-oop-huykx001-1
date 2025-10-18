@@ -95,6 +95,15 @@ class Rig:
                 else:
                     print(f"{self.__name} does not have a hardware patch!")
 
+    def store_release_assets(self, hacker, asset_name):
+        for assets in self.__storage:
+            if assets.get_name() == asset_name:
+                # removes assets from storage
+                self.__storage.remove(assets)
+                # adds the assets from storage into inventory
+                hacker.get_inventory().append(assets)
+                print(f"removed {asset_name} and add it into {hacker.get_name()} inventory")
+
     # String conversation method to format Rig.
     def __str__(self):
         stored_asset = [asset.get_name() for asset in self.__storage]
