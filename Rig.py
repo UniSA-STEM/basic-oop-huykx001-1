@@ -48,16 +48,24 @@ class Rig:
             if asset.get_name() == asset_name:
                 return asset
 
-    # TODO: alter hit damage based on upgrade level
     def take_hit(self):
         # applies damage numbers to rigs
         self.__damage_counter += 1
         print(f"{self.get_name()} has taken hit!\n")
 
-        # Rig is now broken after 2 hits
-        if self.get_name() and self.__damage_counter == 2:
-            self.__broken_state = True
-            print(f"{self.get_name()} is now broken!\n")
+        # Rig is broken based on different upgrade level
+        if self.__upgrade_level == 0:
+            if self.get_name() and self.__damage_counter == 2:
+                self.__broken_state = True
+                print(f"{self.get_name()} is now broken!\n")
+        elif self.__upgrade_level == 1:
+            if self.get_name() and self.__damage_counter == 3:
+                self.__broken_state = True
+                print(f"{self.get_name()} is now broken!\n")
+        elif self.__upgrade_level == 3:
+            if self.get_name() and self.__damage_counter == 3:
+                self.__broken_state = True
+                print(f"{self.get_name()} is now broken!\n")
 
     def repair_rig(self):
         # checks if rig is broke
