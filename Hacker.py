@@ -38,7 +38,6 @@ class Hacker:
     def get_rig_count(self):
         return self.__rig_count
 
-    # Note: might keep later or not.
     def check_rig(self):
         if self.__rig_count != 0 and self.__rig_count < 0:
             return False
@@ -74,6 +73,7 @@ class Hacker:
                         # hacker trace level increases and damage
                         self.__trace_level += 1
                         # : remove data spike from storage
+
                 else:
                     print(f"{self.__name} does not have any data spikes :(")
                 # extracts opponent's assets
@@ -82,6 +82,14 @@ class Hacker:
                     # : remove opponent items
         else:
             print(f"{self.__name} is too exposed! reduce the traces!")
+
+    def encrypt_assets(self, assets):
+        for assets in self.__inventory:
+            if assets.get_encrypted():
+                print(f"Assets already encrypted!")
+            else:
+                # encrypts the assets
+                return True
 
     # String conversion method display Hacker & inventory contents.
     def __str__(self):
