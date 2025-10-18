@@ -86,11 +86,14 @@ class Rig:
 
     def upgrade_rig(self):
         # upgrades the rig's level
-        if self.__upgrade_level < 3:
-            self.__upgrade_level += 1
-            print(f"{self.__name} has been upgraded to level ({self.__upgrade_level})\n")
+        if self.asset_name_retrieve("HardwarePatch"):
+            if self.__upgrade_level < 3:
+                self.__upgrade_level += 1
+                print(f"{self.__name} has been upgraded to level ({self.__upgrade_level})\n")
+            else:
+                print(f"{self.__name} is at maximum capacity!\n")
         else:
-            print(f"{self.__name} is at maximum capacity!\n")
+            print(f"{self.__name} does not have a hardware patch!")
 
     # String conversation method to format Rig.
     def __str__(self):
