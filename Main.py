@@ -20,10 +20,26 @@ foe_rig = Rig("Blank")
 # acquires rig
 hacker.acquire_rig(rig)
 
+# upgrade rig
+rig.upgrade_rig(hacker)
+rig.upgrade_rig(hacker)
+rig.upgrade_rig(hacker)
+
 # attacks opponent rig
+hacker.launch_data_spikes(foe_rig)
 hacker.launch_data_spikes(foe_rig)
 
 # repair Rig
+# foe_rig.repair_rig()
 
+hacker.encrypt_assets(hacker)
 
-# print(hacker)
+# removes assets and transfer into inventory
+rig.store_release_assets(hacker, "RemovableDrive")
+
+# string representation of class Hacker & Rig
+print(hacker)
+print(rig)
+
+# string representation of opponent
+print(foe_rig)
