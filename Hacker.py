@@ -72,27 +72,15 @@ class Hacker:
                         foe_rig.take_hit()
                         # hacker trace level increases and damage
                         self.__trace_level += 1
-                        # TODO: remove data spike from storage
+                        # : remove data spike from storage
                 else:
                     print(f"{self.__name} does not have any data spikes :(")
                 # extracts opponent's assets
                 if foe_rig.get_damage_counter() == 2:
                     print(f"{self.__name} has extracted {foe_rig.get_name()}'s unsecured assets!\n")
-                    # TODO: remove opponent items
+                    # : remove opponent items
         else:
             print(f"{self.__name} is too exposed! reduce the traces!")
-
-    # store assets into storage
-    def store_storage(self, assets):
-        if self.check_rig():
-            for assets in self.__inventory:
-                # removes asset from inventory
-                self.__inventory.remove(assets)
-                # TODO: add asset into storage
-
-                print(f"{assets.get_name()} moved into {self.__rig.get_name()}'s storage")
-            else:
-                print(f"{self.__name} does not have {assets.get_name()} to add to {self.__rig.get_name()}")
 
     # String conversion method display Hacker & inventory contents.
     def __str__(self):
