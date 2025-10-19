@@ -11,8 +11,8 @@ from Asset import Asset
 
 
 class Hacker:
+    # Constructor for the class Hacker to initialise the variables.
     def __init__(self, name):
-        # Constructor for the class Hacker to initialise the variables.
         self.__name = name
         # stores assets
         self.__inventory = [Asset("CryptoToken", "A digital currency!"),
@@ -75,14 +75,11 @@ class Hacker:
                         foe_rig.take_hit()
                         # Hacker trace level increases and damage.
                         self.__trace_level += 1
-                        # : remove data spike from storage
-
                 else:
                     print(f"{self.__name} does not have any data spikes :(")
                 # Extracts opponent's assets.
                 if foe_rig.get_damage_counter() == 2:
                     print(f"{self.__name} has extracted {foe_rig.get_name()}'s unsecured assets!\n")
-                    # : remove opponent items
 
         # blocks attempt due to high trace level
         elif self.__trace_level <= 5:
