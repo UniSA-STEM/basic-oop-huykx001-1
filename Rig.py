@@ -8,21 +8,21 @@ Username: HUYKX001
 This is my own work as defined by the University's Academic Misconduct Policy.
 """
 from Asset import Asset
-from Hacker import Hacker
+
 
 class Rig:
+    # Constructor for the class Rig to initialise the variables.
     def __init__(self, name):
-        # Constructor for the class Rig to initialise the variables.
         self.__name = name
         self.__damage_counter = 0
         self.__broken_state = False
         self.__storage = [Asset("RemovableDrive", "Used for extraction!"),
                           Asset("DataSpike", "used in battles!"),
-                          Asset("DataSpike", "used in battles!"),]
+                          Asset("DataSpike", "used in battles!"), ]
         self.__removable_drive = 1
         self.__upgrade_level = 0
 
-    # Getters for the private attribute
+    # Getters for the private attributes.
     def get_name(self):
         return self.__name
 
@@ -42,17 +42,17 @@ class Rig:
         return self.__upgrade_level
 
     def asset_name_retrieve(self, asset_name):
-        # returns asset name when matched
+        # Returns asset name when matched.
         for asset in self.__storage:
             if asset.get_name() == asset_name:
                 return asset
 
     def take_hit(self):
-        # applies damage numbers to rigs
+        # Applies damage numbers to rigs.
         self.__damage_counter += 1
         print(f"{self.get_name()} has taken hit!\n")
 
-        # Rig is broken based on different upgrade level
+        # Rig is broken based on different upgrade level.
         if self.__upgrade_level == 0:
             if self.get_name() and self.__damage_counter == 2:
                 self.__broken_state = True
@@ -67,16 +67,16 @@ class Rig:
                 print(f"{self.get_name()} is now broken!\n")
 
     def repair_rig(self):
-        # checks if rig is broke
+        # Checks if rig is broken.
         if self.__broken_state:
-            # repairs the Rig broken state
+            # Repairs the Rig broken state.
             self.__damage_counter = 0
             self.__broken_state = False
             print(f"{self.get_name()} has been repaired!\n")
 
     def state(self):
-        # returns the condition state of the rig
-        if self.__broken_state == True:
+        # Returns the condition state of the rig.
+        if self.__broken_state:
             return f"Rig is in a broken state!"
         elif self.__damage_counter == 1:
             return f"Rig has been deteriorated"
@@ -86,7 +86,7 @@ class Rig:
     def upgrade_rig(self, hacker):
         for assets in hacker.get_inventory():
             if isinstance(assets, Asset) and assets.get_name() == "HardwarePatch":
-                # upgrades the rig's level
+                # Upgrades the rig's level.
                 if self.__upgrade_level < 3:
                     self.__upgrade_level += 1
                     print(f"{self.__name} has been upgraded to level ({self.__upgrade_level})\n")
@@ -96,13 +96,16 @@ class Rig:
                     print(f"{self.__name} does not have a hardware patch!")
 
     def store_release_assets(self, hacker, asset_name):
-        for assets in self.__storage:
-            if assets.get_name() == asset_name:
-                # removes assets from storage
-                self.__storage.remove(assets)
-                # adds the assets from storage into inventory
-                hacker.get_inventory().append(assets)
-                print(f"removed {asset_name} and add it into {hacker.get_name()} inventory")
+        if hacker.encrypt_assets() is False:
+            for assets in self.__storage:
+                if assets.get_name() == asset_name:
+                    # Removes assets from storage.
+                    self.__storage.remove(assets)
+                    # Adds the assets from storage into inventory.
+                    hacker.get_inventory().append(assets)
+                    print(f"removed {asset_name} and add it into {hacker.get_name()} inventory\n")
+        else:
+            print("Cannot transfer because encrypted!\n")
 
     # String conversation method to format Rig.
     def __str__(self):
