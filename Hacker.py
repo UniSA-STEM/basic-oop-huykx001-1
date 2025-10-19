@@ -39,13 +39,16 @@ class Hacker:
         return self.__rig_count
 
     def check_rig(self):
+        # Checks if hacker has a rig.
         if self.__rig_count != 0 and self.__rig_count < 0:
+            # Has no rig.
             return False
         else:
+            # Has rig.
             return True
 
     def retrieve_asset_name(self, asset_name):
-        # returns the asset when name is matched.
+        # Returns the asset when name is matched.
         for asset in self.__inventory:
             if asset.get_name() == asset_name:
                 return asset
@@ -53,9 +56,9 @@ class Hacker:
     def acquire_rig(self, rig):
         # Acquires a rig with CryptoToken
         if self.retrieve_asset_name("CryptoToken"):
-            # removes CryptoToken from inventory
+            # Removes CryptoToken from inventory.
             self.__inventory.remove(self.retrieve_asset_name("CryptoToken"))
-            # acquired a rig
+            # Acquired a rig.
             self.__rig = rig
             self.__rig_count += 1
             print(f"{self.__name} has activated the rig :)\n")
@@ -63,24 +66,26 @@ class Hacker:
             print(f"{self.__name} does not enough CryptoToken to acquire a rig!\n")
 
     def launch_data_spikes(self, foe_rig):
-        # checks that trace levels don't exceed past 5
+        # Checks that trace levels don't exceed past 5.
         if self.__trace_level != 5:
-            # Checks if hacker has a rig
+            # Checks if hacker has a rig.
             if self.check_rig():
                 if foe_rig.get_damage_counter() < 2:
                     if self.__rig.asset_name_retrieve("DataSpike"):
                         foe_rig.take_hit()
-                        # hacker trace level increases and damage
+                        # Hacker trace level increases and damage.
                         self.__trace_level += 1
                         # : remove data spike from storage
 
                 else:
                     print(f"{self.__name} does not have any data spikes :(")
-                # extracts opponent's assets
+                # Extracts opponent's assets.
                 if foe_rig.get_damage_counter() == 2:
                     print(f"{self.__name} has extracted {foe_rig.get_name()}'s unsecured assets!\n")
                     # : remove opponent items
-        else:
+
+        # blocks attempt due to high trace level
+        elif self.__trace_level <= 5:
             print(f"{self.__name} is too exposed! reduce the traces!")
 
     def encrypt_assets(self):
@@ -95,9 +100,9 @@ class Hacker:
         if self.encrypt_assets() is False:
             for assets in self.__inventory:
                 if assets.get_name() == asset_name:
-                    # removes assets from inventory
+                    # Removes assets from inventory.
                     self.__inventory.remove(assets)
-                    # adds assets into storage
+                    # Adds assets into storage.
                     rig.get_storage().append(assets)
 
     # String conversion method display Hacker & inventory contents.
