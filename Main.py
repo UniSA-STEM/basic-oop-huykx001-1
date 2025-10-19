@@ -17,7 +17,8 @@ rig = Rig("Anomaly")
 # name created for opponent rig
 foe_rig = Rig("Blank")
 
-## testing here
+# testing here
+# NOTE: tests are grouped under each comment. will only work if other groups are commented
 # acquiring another rig without a CryptoToken
 hacker.acquire_rig(rig)
 hacker.acquire_rig(rig)
