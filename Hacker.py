@@ -1,7 +1,7 @@
 """
 File: Hacker.py
 Description: This module represents the hacker class and has methods
-that allow the hacker to...
+that allow the hacker to acquire rig, attack, and store/transfer assets.
 Author: Kim Xuyen Huynh
 ID: 110442620
 Username: HUYKX001

@@ -1,6 +1,6 @@
 """
 File: main.py
-Description: <A brief description of this Python module.>
+Description: This module is for testing the codes from the other classes to run.
 Author: Kim Xuyen Huynh
 ID: 110442620
 Username: HUYKX001
@@ -58,7 +58,7 @@ hacker.encrypt_assets()
 hacker.acquire_rig(rig)
 hacker.launch_data_spikes(foe_rig)
 hacker.encrypt_assets()
-rig.store_release_assets(hacker, "RemovableDrive") # test out other assets here
+rig.store_release_assets(hacker, "RemovableDrive")  # test out other assets here
 print(hacker)
 print(rig)
 
@@ -66,7 +66,7 @@ print(rig)
 hacker.acquire_rig(rig)
 hacker.launch_data_spikes(foe_rig)
 hacker.encrypt_assets()
-hacker.store_retrieve_assets(rig, "HardwarePatch") # test out other assets here
+hacker.store_retrieve_assets(rig, "HardwarePatch")  # test out other assets here
 print(hacker)
 print(rig)
 

@@ -1,7 +1,7 @@
 """
 File: Rig.py
 Description: This module displays the rig(computer) class which has methods
-that...
+that repairs rig, upgrade, and store/transfer assets.
 Author: Kim Xuyen Huynh
 ID: 110442620
 Username: HUYKX001
