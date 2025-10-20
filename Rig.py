@@ -62,7 +62,7 @@ class Rig:
                 self.__broken_state = True
                 print(f"{self.get_name()} is now broken!\n")
         elif self.__upgrade_level == 3:
-            if self.get_name() and self.__damage_counter == 3:
+            if self.get_name() and self.__damage_counter == 4:
                 self.__broken_state = True
                 print(f"{self.get_name()} is now broken!\n")
 
