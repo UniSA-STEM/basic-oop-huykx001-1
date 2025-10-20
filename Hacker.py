@@ -11,7 +11,10 @@ from Asset import Asset
 
 
 class Hacker:
-    # Constructor for the class Hacker to initialise the variables.
+    """
+    Constructor for the class Hacker with private attributes.
+    """
+
     def __init__(self, name):
         self.__name = name
         # stores assets
@@ -39,7 +42,9 @@ class Hacker:
         return self.__rig_count
 
     def check_rig(self):
-        # Checks if hacker has a rig.
+        """
+        Checks if hacker has a rig, which returns false or true.
+        """
         if self.__rig_count != 0 and self.__rig_count < 0:
             # Has no rig.
             return False
@@ -48,13 +53,18 @@ class Hacker:
             return True
 
     def retrieve_asset_name(self, asset_name):
-        # Returns the asset when name is matched.
+        """
+        Returns the asset when name is matched.
+        """
         for asset in self.__inventory:
+            # asset name in inventory is matched with asset name in parameter
             if asset.get_name() == asset_name:
                 return asset
 
     def acquire_rig(self, rig):
-        # Acquires a rig with CryptoToken
+        """
+        Acquires a rig with CryptoToken.
+        """
         if self.retrieve_asset_name("CryptoToken"):
             # Removes CryptoToken from inventory.
             self.__inventory.remove(self.retrieve_asset_name("CryptoToken"))
@@ -66,12 +76,16 @@ class Hacker:
             print(f"{self.__name} does not enough CryptoToken to acquire a rig!\n")
 
     def launch_data_spikes(self, foe_rig):
+        """
+        Launches data spikes against opponents and securing their assets.
+        """
         # Checks that trace levels don't exceed past 5.
         if self.__trace_level != 5:
             # Checks if hacker has a rig.
             if self.check_rig():
                 if foe_rig.get_damage_counter() < 2:
                     if self.__rig.asset_name_retrieve("DataSpike"):
+                        # Enemy takes hit message.
                         foe_rig.take_hit()
                         # Hacker trace level increases and damage.
                         self.__trace_level += 1
@@ -81,12 +95,16 @@ class Hacker:
                 if foe_rig.get_damage_counter() == 2:
                     print(f"{self.__name} has extracted {foe_rig.get_name()}'s unsecured assets!\n")
 
-        # blocks attempt due to high trace level
+        # blocks attempt due to maximum trace level
         elif self.__trace_level <= 5:
             print(f"{self.__name} is too exposed! reduce the traces!")
 
     def encrypt_assets(self):
+        """
+        encrypts assets to prevent transferring when returned true.
+        """
         if self.retrieve_asset_name("SecurityChip"):
+            # removes security chip from inventory
             self.__inventory.remove(self.retrieve_asset_name("SecurityChip"))
             print(f"{self.__name}'s assets has been encrypted")
             return True
@@ -94,6 +112,9 @@ class Hacker:
             return False
 
     def store_retrieve_assets(self, rig, asset_name):
+        """
+        function gets the asset name, remove it from inventory and transfer it to the storage.
+        """
         if self.encrypt_assets() is False:
             for assets in self.__inventory:
                 if assets.get_name() == asset_name:
@@ -102,8 +123,10 @@ class Hacker:
                     # Adds assets into storage.
                     rig.get_storage().append(assets)
 
-    # String conversion method display Hacker & inventory contents.
     def __str__(self):
+        """
+        returns the formatted information of Hacker & inventory contents.
+        """
         asset_storage = [storage.get_name() for storage in self.__inventory]
 
         return (f"Hacker's name: {self.__name}\n"

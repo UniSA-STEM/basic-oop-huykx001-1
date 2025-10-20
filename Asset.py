@@ -11,6 +11,10 @@ This is my own work as defined by the University's Academic Misconduct Policy.
 
 class Asset:
     def __init__(self, name, description):
+        """
+        Constructor for the class Asset with private attributes such as
+        name, description, and encrypted.
+        """
         # Constructor for the class Asset to initialise the variables.
         self.__name = name
         self.__description = description
@@ -20,8 +24,10 @@ class Asset:
     def get_name(self):
         return self.__name
 
-    # String conversation method to format Asset.
     def __str__(self):
+        """
+        returns the formatted information of the Assets in inventory & storage.
+        """
         if self.__encrypted is not None:
             return f"{self.__name}: {self.__description} [Encrypted]"
         else:

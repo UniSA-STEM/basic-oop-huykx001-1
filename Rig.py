@@ -11,7 +11,11 @@ from Asset import Asset
 
 
 class Rig:
-    # Constructor for the class Rig to initialise the variables.
+    """
+    Constructor for the class Rig with private attributes such as
+    name, damage counter, broken state, storage, removable drive, and upgrade level.
+    """
+
     def __init__(self, name):
         self.__name = name
         self.__damage_counter = 0
@@ -48,6 +52,9 @@ class Rig:
                 return asset
 
     def take_hit(self):
+        """
+        function will return the number of damage applied to the rigs.
+        """
         # Applies damage numbers to rigs.
         self.__damage_counter += 1
         print(f"{self.get_name()} has taken hit!\n")
@@ -67,6 +74,9 @@ class Rig:
                 print(f"{self.get_name()} is now broken!\n")
 
     def repair_rig(self):
+        """
+        function sets repairs rig by setting broken state back to zero.
+        """
         # Checks if rig is broken.
         if self.__broken_state:
             # Repairs the Rig broken state.
@@ -75,7 +85,9 @@ class Rig:
             print(f"{self.get_name()} has been repaired!\n")
 
     def state(self):
-        # Returns the condition state of the rig.
+        """
+        Returns the condition depending on the state of the rig.
+        """
         if self.__broken_state:
             return f"Rig is in a broken state!"
         elif self.__damage_counter == 1:
@@ -84,18 +96,27 @@ class Rig:
             return f"Rig is in perfect condition!"
 
     def upgrade_rig(self, hacker):
+        """
+        Upgrades the rigs which range from level 1, 3. The rig can take on more attacks.
+        """
         for assets in hacker.get_inventory():
             if isinstance(assets, Asset) and assets.get_name() == "HardwarePatch":
                 # Upgrades the rig's level.
                 if self.__upgrade_level < 3:
+                    # increases the upgrade level
                     self.__upgrade_level += 1
                     print(f"{self.__name} has been upgraded to level ({self.__upgrade_level})\n")
                 elif self.__upgrade_level <= 4:
+                    # cannot upgrade to level 4
                     print(f"{self.__name} is at maximum capacity!\n")
+                    # no hardware patch in inventory
                 else:
                     print(f"{self.__name} does not have a hardware patch!")
 
     def store_release_assets(self, hacker, asset_name):
+        """
+        function gets the asset name, remove it from storage and transfer it to the inventory.
+        """
         if hacker.encrypt_assets() is False:
             for assets in self.__storage:
                 if assets.get_name() == asset_name:
@@ -107,8 +128,10 @@ class Rig:
         else:
             print("Cannot transfer because encrypted!\n")
 
-    # String conversation method to format Rig.
     def __str__(self):
+        """
+        returns the formatted information of Rig.
+        """
         stored_asset = [asset.get_name() for asset in self.__storage]
 
         return (f"name: {self.__name}\n"
